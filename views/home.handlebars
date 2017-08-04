@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to our site, please login to connect!</h1>
+    </header>
+    <ul>
+      {{#errors}}
+        <li>{{msg}}</li>
+      {{/errors}}
+    </ul>
+
+<form action"/login" method="post">
+<input name="username"  placeholder="username" value=""/>
+<input name="password"  placeholder="password" value=""/>
+<button type="submit" name="loginButton">Login</button>
+</form>
+
+  </body>
+</html>
