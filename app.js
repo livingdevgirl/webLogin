@@ -36,15 +36,19 @@ app.use(bodyParser.urlencoded({
 app.use(expressValidator());
 
 app.get('/', (req, res) => {
-if (!req.session.user) {
+if (!req.session.username) {
   res.render('login')
 } else {
   res.render('home', {
-    user: req.session.user
+    user: req.session.username
   })
 }
 });
 
+
+app.get('/home', (req, res) => {
+  res.render('home')
+})
 //endpoints
 app.get('/login', function(req, res) {
   res.render('login')
@@ -77,6 +81,7 @@ app.post('/login', function(req, res) {
 
     let players = users.filter(function(userCheck){
       return userCheck.username === req.body.username;
+      res.redirect('/home')
     });
     console.log(players);
 
@@ -90,7 +95,7 @@ app.post('/login', function(req, res) {
 
   if (control.password === req.body.password){
     req.session.user = control.username;
-    res.redirect('/');
+    res.redirect('/home');
   } else {
     let notPassword = "Dude you need a password."
     res.send(notPassword);
