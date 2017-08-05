@@ -45,12 +45,17 @@ if (!req.session.username) {
 }
 });
 
+//endpoints
 
 app.get('/home', (req, res) => {
   res.render('home')
 })
-//endpoints
+
 app.get('/login', function(req, res) {
+  res.render('login')
+});
+
+app.get('/login:username', function(req, res) {
   res.render('login')
 });
 //
